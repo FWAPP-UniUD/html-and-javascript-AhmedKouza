@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+        
+    </head>
+    <body>
+        <img id="immagine" src="img/pallone.jpg" title="Pallone della serie A" alt="Questo è un pallone">
+
+        <!--Exercise 7-->
+        <!--<script type="text/javascript">
+            function OnClickFunction() {
+                window.alert("You clicked me");
+            }
+            function OnMouseOver() {
+                window.alert("You are on the image with the mouse");
+            }
+
+            const immag = document.getElementById("immagine");
+            immag.addEventListener('click', OnClickFunction); 
+            immag.addEventListener('mouseover', OnMouseOver)
+        </script>-->
+
+        <!--Exercise 8-->
+        <script type="text/javascript">
+            function OnClickFunction() {
+                immag.setAttribute('src', 'smiles/1.png');
+            }
+            function OnMouseOver() {
+                immag.setAttribute('src', 'smiles/2.png');
+            }
+            const immag = document.getElementById("immagine");
+            immag.addEventListener('click', OnClickFunction); 
+            immag.addEventListener('mouseover', OnMouseOver); 
+        </script>
+
+    </body>
+
+</html>

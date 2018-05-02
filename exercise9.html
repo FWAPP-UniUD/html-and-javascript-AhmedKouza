@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+        <style>
+            .hide {
+                visibility: hidden;
+            }
+            .seek {
+                visibility: visible;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="seekButton" type="button" name="Seek">SEEK</button>
+        <button id="hideButton" type="button" name="Hide">HIDE</button>
+        <div id="placeholder"></div>
+
+
+    <script type="text/javascript">
+        function seekFunction() {
+            const ExistP = document.querySelector('p');
+            if (ExistP==null){
+                const continer = document.getElementById("placeholder");
+                const new_p = document.createElement('p');
+                const content_p = document.createTextNode("Lorem ipsum...");
+                new_p.appendChild(content_p);
+                continer.appendChild(new_p);
+        }
+        else {
+            ExistP.setAttribute("class", "seek")
+        }
+    }
+        function hideFunction() {
+            const ExistP = document.querySelector('p');
+            if(ExistP)
+                ExistP.setAttribute("class", "hide");
+        }
+    document.getElementById("seekButton").addEventListener('click', seekFunction);
+    document.getElementById("hideButton").addEventListener('click', hideFunction);
+    </script>    
+    </body>
+
+</html>

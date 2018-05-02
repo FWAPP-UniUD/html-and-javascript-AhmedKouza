@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+        <form>
+            <fieldset id="MyFieldSet">
+                <legend>LOGIN:</legend>
+                Name: <input type="text"><br>
+                Email: <input type="text"><br>
+                Date of birth: <input type="text">
+            </fieldset>
+            <br>
+            <input id="MyEnabler" type="checkbox" name="Enabler" value="EnablerTrue"> Disable FORM<br>
+        </form>
+
+    <script type="text/javascript">
+        function Enable() {
+
+            document.getElementById("MyFieldSet").disabled = document.getElementById("MyEnabler").checked;
+        }
+       
+    document.getElementById("MyEnabler").addEventListener('click', Enable);
+    </script>    
+    </body>
+
+</html>

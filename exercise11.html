@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+        <form>
+            Number of paragraph: <input type="text" name="NumberParagraph" value="5"> <br><br>
+            Average Length: <br>
+            <input type="radio" name="average" value="short"> SHORT<br>
+            <input type="radio" name="average" value="medium"> MEDIUM<br>
+            <input type="radio" name="average" value="long"> LONG<br>
+            <input type="radio" name="average" value="verylong"> VERY LONG<br><br>
+            Decorated text <input type="checkbox" name="decorated"><br><br>
+            <button id="generator" type="button">GENERATE</button>
+        </form>    
+        <div id="continer"></div>
+        <script>
+            function GenerateText() {
+                const continer = document.getElementById("continer");
+                const new_p = document.createElement('p');
+                const content_p = document.createTextNode("scrivi questo");
+                new_p.appendChild(content_p);
+                continer.appendChild(new_p);
+
+                //modifica qua
+                const NumberParagraphValue = document.getElementsByName("NumberParagraph");
+                const AverageValue = document.querySelector('input[name=average]:checked').value;
+                const DecoratedValue= document.getElementsByName("decorated").checked;
+            
+                const requestText = "https://loripsum.net/api"+"/"+NumberParagraphValue+"/"+AverageValue;
+                if (DecoratedValue){
+                    requestText = requestText+"/"+"decorated";
+                }
+            
+                fetch(requestText).then(function(response) {
+                    if (!response.ok) {
+                        const res = response.json();
+                        throw Error(res.result);
+                    }
+                    return response.json();
+                }).then(function(data) {
+                    const continer = document.getElementById("continer");
+                    const content = document.createElement("p");
+                    content.textContent = data;
+                    continer.appendChild(content);
+                }).catch(function(error) {
+                    const continer = document.getElementById("continer");
+                    const content = document.createElement("p");
+                    content.textContent = error;
+                    continer.appendChild(content);
+                });
+            }
+            document.getElementById("generator").addEventListener('click', GenerateText);
+        </script>
+
+
+
+
+
+    </body>
+
+</html>
